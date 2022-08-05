@@ -8,8 +8,12 @@ const windowHeight = Dimensions.get('window').height;
 // create a component
 const Login = ({navigation}) => {
     return (
-        <SafeAreaView>
-            <View style={styles.form}>
+        <SafeAreaView style={styles.container}>
+            <Text style={{fontWeight: '100', fontSize: 34, marginBottom: 10 }}>Welcome Back</Text>
+            <Text style={{ marginBottom: 10, fontSize: 18 }}>
+                Sign in to continue
+            </Text>
+            <View  style={styles.form}>
             <TextInput
                 style={styles.input}
                 placeholder="Email"
@@ -36,6 +40,9 @@ const Login = ({navigation}) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor:"fff",
+        padding: 30,
+        paddingTop: 130,
     },
     input: {
         height: 40,
@@ -48,14 +55,14 @@ const styles = StyleSheet.create({
         alignItems: "center",
         backgroundColor: "#6200ea",
         padding: 10,
-        margin:10,
+        margin:30,
         borderRadius:10,
-       
-       
+        position:'absolute',
+        bottom:0,
+        width: '100%',
     },
     form:{
-        margin:16,
-        paddingTop:windowHeight/5
+        paddingTop:windowHeight * 0.10
 
     }
 });

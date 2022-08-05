@@ -6,6 +6,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import serviceData from './Data';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
+const cardHieght = windowHeight * 0.2;
+const cardWidth = windowHeight * 0.2;
 
 // create a component
 const Home = ({ navigation }) => {
@@ -16,8 +18,14 @@ const Home = ({ navigation }) => {
                 contentInset={{padding: 12}}
                 renderItem={({item}) =>{
                     return(
-                        <TouchableOpacity style={{margin:10, height:windowHeight * 0.2,backgroundColor:item.bgColor, borderRadius:10}}>
-                           <View style={{backgroundColor:item.bgColor}}>
+                        <TouchableOpacity  onPress={() => navigation.navigate('Detail')} style={{padding:15,margin:10, height:windowHeight * 0.2,backgroundColor:item.bgColor, borderRadius:10,position:'relative'}}>
+                           <View style={[
+                                    StyleSheet.absoluteFillObject,
+                                    { padding: 10 }
+                                ]}>
+                           <Image style={{
+                                height: cardHieght * 0.8, width:cardWidth * 1, position:'absolute', right:0,bottom:0,resizeMode:'contain'
+                            }} source={item.image}/>
                            <Text style={styles.category}>
                                 {item.category}
                             </Text>
@@ -27,14 +35,9 @@ const Home = ({ navigation }) => {
                             <Text>
                                 {item.numberCompany}
                             </Text>
-                           
-                            
+                          
                            </View>
-                           <Image style={{
-                                height:90, width:60, position:'absolute', right:0, margin:10,bottom:0
-                            }} source={item.image}/>
-
-                           
+                        
                         </TouchableOpacity>
                     )
                 }}
